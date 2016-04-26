@@ -1,0 +1,21 @@
+{
+  "name": "uu-select",
+  "version": "1.0.0",
+  "description": "Native JS elements selector and helpers for classes, attributes or styles",
+  "main": "uuSelect.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lordfpx/uuSelect.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "native",
+    "selector",
+    "helper"
+  ],
+  "author": "Thierry Philippe",
+  "license": "ISC"
+}
