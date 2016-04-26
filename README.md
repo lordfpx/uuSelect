@@ -6,19 +6,20 @@
   - You can't/don't want to use jQuery in your project/plugin
   - You are tired of native DOM api syntax
   - you target modern browsers >= IE10
+  - a fast way to automatically loop through elements
 
   Demo: [Codepen](http://codepen.io/lordfpx/pen/BKPEOQ)
 
-  You can also find it on npm: https://www.npmjs.com/package/uu-select
+  NPM: https://www.npmjs.com/package/uu-select
 
   > npm install uu-select
 
-  The plugin is commonJS (tested with browserify) and AMD (untested) compliant.
+  The plugin is commonJS and AMD compliant.
 
 
 ## Plugin initialization
 
-  __ function is attached to window once the plugin is loaded.
+  __ function is attached to the window once the plugin is loaded.
 
 
 ## Usage
@@ -86,9 +87,10 @@
   ```
 
 #### css
-  - Get value of a property style:
+  - Get a computed style value:
     ```javascript
     __(selector [, context]).css(property);
+    // will return its value
     ```
 
   - Set styles:
