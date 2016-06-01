@@ -1,12 +1,15 @@
 # uuSelect
 
-  Native JS elements selector and helpers for classes, attributes or styles.
+  Native JS elements selector and helpers for classes, attributes or styles. It's very small: about 700 bytes when uglified and Gziped!
 
   Why this plugin:
-  - You can't/don't want to use jQuery in your project/plugin
+  - when jQuery is not an option in your project or plugin
   - You are tired of native DOM api syntax
-  - you target modern browsers >= IE10
-  - a fast way to automatically loop through elements
+  - you target modern browsers >= IE10 (IE9, see below)
+  - a fast way to automatically loop through collection of elements
+
+  You can still add IE9 browser support with this shim for classList: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList#JavaScript_shim_for_other_implementations or if your using npm, https://www.npmjs.com/package/classlist-polyfill
+
 
   Demo: [Codepen](http://codepen.io/lordfpx/pen/BKPEOQ)
 
