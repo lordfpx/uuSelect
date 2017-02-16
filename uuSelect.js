@@ -1,7 +1,7 @@
-(function(name, definition) {
-    if (typeof module != 'undefined') module.exports = definition();
-    else if (typeof define == 'function' && typeof define.amd == 'object') define(definition);
-    else this[name] = definition();
+;(function(name, definition) {
+  if (typeof module !== 'undefined') module.exports = definition();
+  else if (typeof define === 'function' && typeof define.amd === 'object') define(definition);
+  else this[name] = definition();
 }('uuSelect', function() {
 
   'use strict';
@@ -17,40 +17,17 @@
   };
 
   __.fn = function(selector, context) {
-    var that = this,
-        nodes;
-
-    if (context) {
-      that.length = 0;
-      context = document.querySelectorAll(context);
-
-      // loop through contexts
-      loop(context, function(index, value){
-        nodes = value.querySelectorAll(selector || 'body');
-        // loop through elements
-        loop(nodes, function(index, value){
-          that[that.length] = value;
-          that.length++;
-        });
-      });
-    } else {
-      nodes = document.querySelectorAll(selector || 'body');
-      this.length = nodes.length;
-      // loop through elements
-      loop(nodes, function(index, value){
-        that[index] = value;
-      });
-    }
-
-    return this;
+    return [].slice.call((context || document).querySelectorAll(selector));
   };
 
   __.fn.prototype = {
     // classList.add()
     addClass: function(string) {
       if (typeof string === 'undefined') return this;
+
       var names = string.split(' '),
-          that = this;
+          that  = this;
+
       loop(names, function(index, value){
         loop(that, function(index, value){
           value.classList.add(this);
@@ -62,8 +39,10 @@
     // classList.remove()
     removeClass: function(string) {
       if (typeof string === 'undefined') return this;
+
       var names = string.split(' '),
-          that = this;
+          that  = this;
+
       loop(names, function(index, value){
         loop(that, function(index, value){
           value.classList.remove(this);
@@ -75,8 +54,10 @@
     // classList.toggle()
     toggleClass: function(string) {
       if (typeof string === 'undefined') return this;
+
       var names = string.split(' '),
-          that = this;
+          that  = this;
+
       loop(names, function(index, value){
         loop(that, function(index, value){
           value.classList.toggle(this);
@@ -88,6 +69,7 @@
     // classList.contains()
     hasClass: function(string){
       if (typeof string === 'undefined') return false;
+
       for (var i = 0, len = this.length; i < len; i++) {
         if (this[i].classList.contains(string)) {
           return true;
@@ -99,6 +81,7 @@
     // getAttribute() | setAttribute()
     attr: function(property, setValue){
       if (typeof property === 'undefined') return this;
+
       var that = this;
 
       // getAttribute
@@ -111,6 +94,7 @@
       if (typeof property === 'object') {
         for (var prop in property) {
           if (!property.hasOwnProperty(prop)) continue;
+
           loop(that, function(index, value){
             value.setAttribute(prop, property[prop]);
           });
@@ -130,8 +114,10 @@
     // removeAttribute()
     removeAttr: function(string){
       if (typeof string === 'undefined') return this;
+
       var names = string.split(' '),
-          that = this;
+          that  = this;
+
       loop(names, function(index, value){
         loop(that, function(index, value){
           value.removeAttribute(this);
@@ -143,6 +129,7 @@
     // style
     css: function(property, setValue){
       if (typeof property === 'undefined') return this;
+
       var that = this;
 
       // getComputedStyle(). getPropertyValue()
