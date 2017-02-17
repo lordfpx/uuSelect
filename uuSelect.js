@@ -17,7 +17,23 @@
   };
 
   __.fn = function(selector, context) {
-    return [].slice.call((context || document).querySelectorAll(selector));
+    var that    = this,
+        context = document.querySelectorAll(context || 'body'),
+        nodes;
+
+    that.length = 0;
+
+    // loop through contexts
+    loop(context, function(index, value){
+      nodes = value.querySelectorAll(selector || 'body');
+      // loop through elements
+      loop(nodes, function(index, value){
+        that[that.length] = value;
+        that.length++;
+      });
+    });
+
+    return that;
   };
 
   __.fn.prototype = {
@@ -67,7 +83,7 @@
     },
 
     // classList.contains()
-    hasClass: function(string){
+    hasClass: function(string) {
       if (typeof string === 'undefined') return false;
 
       for (var i = 0, len = this.length; i < len; i++) {
@@ -79,10 +95,8 @@
     },
 
     // getAttribute() | setAttribute()
-    attr: function(property, setValue){
+    attr: function(property, setValue) {
       if (typeof property === 'undefined') return this;
-
-      var that = this;
 
       // getAttribute
       if (typeof property === 'string' && typeof setValue === 'undefined') {
@@ -95,7 +109,7 @@
         for (var prop in property) {
           if (!property.hasOwnProperty(prop)) continue;
 
-          loop(that, function(index, value){
+          loop(this, function(index, value){
             value.setAttribute(prop, property[prop]);
           });
         }
@@ -104,7 +118,7 @@
 
       // ... single attribute
       if (typeof property === 'string') {
-        loop(that, function(index, value){
+        loop(this, function(index, value){
           value.setAttribute(property, setValue);
         });
       }
@@ -112,7 +126,7 @@
     },
 
     // removeAttribute()
-    removeAttr: function(string){
+    removeAttr: function(string) {
       if (typeof string === 'undefined') return this;
 
       var names = string.split(' '),
@@ -127,14 +141,12 @@
     },
 
     // style
-    css: function(property, setValue){
+    css: function(property, setValue) {
       if (typeof property === 'undefined') return this;
-
-      var that = this;
 
       // getComputedStyle(). getPropertyValue()
       if (typeof property === 'string' && typeof setValue === 'undefined') {
-        return getComputedStyle(that[0], null). getPropertyValue(property);
+        return getComputedStyle(this[0], null). getPropertyValue(property);
       }
 
       // style
@@ -142,7 +154,7 @@
       if (typeof property === 'object') {
         for (var prop in property) {
           if (!property.hasOwnProperty(prop)) continue;
-          loop(that, function(index, value){
+          loop(this, function(index, value){
             value.style[prop] = property[prop];
           });
         }
@@ -151,11 +163,27 @@
 
       // ... single property
       if (typeof property === 'string') {
-        loop(that, function(index, value){
+        loop(this, function(index, value){
           value.style[property] = setValue;
         });
       }
       return this;
+    },
+
+    // events manager
+    on: function(event, listener, useCapture) {
+      var useCapture = useCapture || false;
+
+      loop(this, function(index, value){
+        value.addEventListener(event, listener, useCapture);
+      });
+    },
+
+    // events manager
+    off: function(event, listener) {
+      loop(this, function(index, value){
+        value.removeEventListener(event, listener);
+      });
     }
   };
 

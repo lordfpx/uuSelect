@@ -100,3 +100,15 @@ You can easily add IE9 browser support with this [shim for classList](https://ww
       property: value
   });
   ```
+
+#### Events
+  - addEventListener
+  ```javascript
+  __(selector [, context]).on(event, listener [, capture]);
+  // beware, the listener must NOT be an ananymous function
+  ```
+
+  - removeEventListener
+  ```javascript
+  __(selector [, context]).of(event, listener);
+  ```
