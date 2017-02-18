@@ -1,6 +1,6 @@
 {
   "name": "uu-select",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Native JS elements selector and helpers for classes, attributes or styles",
   "main": "uuSelect.js",
   "repository": {
