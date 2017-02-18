@@ -1,10 +1,10 @@
 # uuSelect
 
 Pure JavaScript elements selector and helpers for classes, attributes or styles.
-It's very small: about **600 bytes** when uglified and Gziped!
+It's very small: about **700 bytes** when uglified and Gziped!
 The plugin is commonJS and AMD compliant.
 
-## Why this plugin ?
+**Why this plugin ?**
 - when jQuery is not an option
 - You are tired of the native DOM api syntax
 - you target only modern browsers >= IE10 (IE9, see below)
@@ -12,17 +12,15 @@ The plugin is commonJS and AMD compliant.
 
 You can easily add IE9 browser support with this [shim for classList](https://www.npmjs.com/package/classlist-polyfill).
 
-## Demo
+**Demo**
 [Codepen](http://codepen.io/lordfpx/pen/BKPEOQ)
 
-## NPM
+**NPM**
 [NPM page](https://www.npmjs.com/package/uu-select)
 
 > npm install uu-select
 
-## Usage
-
-### Selectors
+## Selectors
 
   The __ function accept 2 parameters, a `selector` and a `context` (optional), that must be valid querySelectorAll selectors:
 
@@ -34,28 +32,28 @@ You can easily add IE9 browser support with this [shim for classList](https://ww
   __('.my-class', '.wrapper-class');
   ```
 
-### Helpers
+## Helpers
 
-#### addClass
-  Add 1 or more classes:
+### addClass
+  - Add 1 or more classes:
   ```javascript
   __(selector [, context]).addClass(className [, className]);
   ```
 
-#### removeClass
-  Remove 1 or more classes:
+### removeClass
+  - Remove 1 or more classes:
   ```javascript
   __(selector [, context]).removeClass(className [, className]);
   ```
 
-#### toggleClass
-  Toggle 1 or more classes:
+### toggleClass
+  - Toggle 1 or more classes:
   ```javascript
   __(selector [, context]).toggleClass(className [, className]);
   ```
 
-#### hasClass
-  Check if at least 1 element has this class:
+### hasClass
+  - Check if at least 1 element has this class:
   ```javascript
   __(selector [, context]).hasClass(className);
   // return true or false
@@ -78,13 +76,13 @@ You can easily add IE9 browser support with this [shim for classList](https://ww
   });
   ```
 
-#### removeAttr
-  Remove 1 or more attribute:
+### removeAttr
+  - Remove 1 or more attribute:
   ```javascript
   __(selector [, context]).removeAttr(attributeName [, attributeName]);
   ```
 
-#### css
+### css
   - Get a computed style value:
   ```javascript
   __(selector [, context]).css(property);
@@ -101,13 +99,14 @@ You can easily add IE9 browser support with this [shim for classList](https://ww
   });
   ```
 
-#### Events
+### on
   - addEventListener
   ```javascript
   __(selector [, context]).on(event, listener [, capture]);
-  // beware, the listener must NOT be an ananymous function
+  // Don't use an anonymous function is you plan to remove that event later
   ```
 
+### off
   - removeEventListener
   ```javascript
   __(selector [, context]).of(event, listener);

@@ -177,6 +177,7 @@
       loop(this, function(index, value){
         value.addEventListener(event, listener, useCapture);
       });
+      return this;
     },
 
     // events manager
@@ -184,6 +185,7 @@
       loop(this, function(index, value){
         value.removeEventListener(event, listener);
       });
+      return this;
     }
   };
 
